@@ -8,15 +8,16 @@ var playerMoney= 10
 var enemyName = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
-
+var fight = function(enemyName){}
    // repeat and execute as long as the enemy-robot is alive
    while(enemyHealth >0) {
-    var fight = function(enemyName) 
-  }
-   
+    var promptFight = window.prompt ("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP'to choose");
+    } 
+    
+  
 
   
-  var promptFight = window.prompt ("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP'to choose");
+ 
 
 // if player choses to fight, then fight
 if (promptFight === "fight" || promptFight === "FIGHT") {
@@ -42,6 +43,7 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
   // check player's health
   if (playerHealth <= 0) {
     window.alert(playerName + " has died!");
+    break;
   } else {
     window.alert(playerName + " still has " + playerHealth + " health left.");
   }
@@ -63,9 +65,12 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
 }
 
 
-for(var i = 0; i < enemyNames.length; i++) {
-  fight(enemyNames [i])
+for (var i = 0; i < enemyNames.length; i++) {
+  var pickedEnemyName = enemyNames[i];
+  enemyHealth = 50;
+  fight(pickedEnemyName);
   console.log(enemyNames.length [i]);
   console.log(i);
   console.log(enemyNames[i] + "is at" + i + "index");
 }
+
