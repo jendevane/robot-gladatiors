@@ -81,6 +81,10 @@ function startGame() {
       enemyHealth = 50;
 
       fight(pickedEnemyName);
+      if (playerHealth > 0 && i < enemyNames.length - 1){
+        shop ();
+      }
+      
    
     
     }
