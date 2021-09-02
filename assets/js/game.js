@@ -43,6 +43,7 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
   // check enemy's health
   if (enemyHealth <= 0) {
     window.alert(enemyName + " has died!");
+    endGame ()
   } else {
     window.alert(enemyName + " still has " + enemyHealth + " health left.");
   }
@@ -56,6 +57,7 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
   // check player's health
   if (playerHealth <= 0) {
     window.alert(playerName + " has died!");
+    endGame ()
     break;
     
   }
@@ -66,8 +68,7 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
 
   }
 }
-  
-var startGame = function() {
+function startGame() {
   playerHealth = 100;
   playerAttack = 10;
   playerMoney = 10;
@@ -90,10 +91,10 @@ var startGame = function() {
     startGame();
   };
 
-
+}
    
 
-var endGame=function(){
+function endGame(){
   if (playerHealth >0) {
   window.alert("Great job, you've survived the game! You now have a score of " + playerMoney + ".");
 } 
@@ -111,4 +112,4 @@ else {
   window.alert("Thank you for playing Robot Gladiators! Come back soon!");
 }
 }
-}
+
