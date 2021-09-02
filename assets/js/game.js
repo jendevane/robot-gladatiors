@@ -5,10 +5,10 @@ var playerMoney= 10
 // You can also log multiple values at once like this
 
 
-var enemyName = ["Roborto", "Amy Android", "Robo Trumble"];
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
-var fight = function(enemyName){}
+var fight = function(enemyName){
    // repeat and execute as long as the enemy-robot is alive
    while(enemyHealth >0) {
     var promptFight = window.prompt ("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP'to choose");
@@ -68,6 +68,7 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
 
   }
 }
+};
 function startGame() {
   playerHealth = 100;
   playerAttack = 10;
@@ -81,22 +82,23 @@ function startGame() {
       enemyHealth = 50;
 
       fight(pickedEnemyName);
+      
       if (playerHealth > 0 && i < enemyNames.length - 1){
         shop ();
       }
       
-   
+    
     
     }
     else {
       window.alert("You have lost your robot in battle! Game Over!");
       break;
     }
-    startGame();
+    endGame();
   };
 
 }
-   
+  
 
 function endGame(){
   if (playerHealth >0) {
@@ -107,7 +109,9 @@ else {
 }
 
 var playAgainConfirm = window.confirm("Would you like to play again?");
-
+var shop = function() {
+  console.log("entered the shop");
+};
 if (playAgainConfirm) {
   // restart the game
   startGame();
@@ -116,4 +120,4 @@ else {
   window.alert("Thank you for playing Robot Gladiators! Come back soon!");
 }
 }
-
+startGame();
