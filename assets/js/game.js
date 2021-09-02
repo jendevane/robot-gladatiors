@@ -5,10 +5,10 @@ var playerMoney= 10
 // You can also log multiple values at once like this
 
 
-var enemyName = ["Roborto", "Amy Android", "Robo Trumble"];
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
-var fight = function(enemyName){}
+var fight = function(enemyName){
    // repeat and execute as long as the enemy-robot is alive
    while(enemyHealth >0) {
     var promptFight = window.prompt ("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP'to choose");
@@ -68,6 +68,7 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
 
   }
 }
+};
 function startGame() {
   playerHealth = 100;
   playerAttack = 10;
@@ -81,22 +82,26 @@ function startGame() {
       enemyHealth = 50;
 
       fight(pickedEnemyName);
+
       if (playerHealth > 0 && i < enemyNames.length - 1){
-        shop ();
-      }
-      
-   
-    
+       // ask if player wants to use the store before next round
+  var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
+
+  // if yes, take them to the store() function
+  if (storeConfirm) {
+    shop();
+  }
+}
     }
     else {
       window.alert("You have lost your robot in battle! Game Over!");
       break;
     }
-    startGame();
+    endGame();
   };
 
 }
-   
+  
 
 function endGame(){
   if (playerHealth >0) {
@@ -107,7 +112,39 @@ else {
 }
 
 var playAgainConfirm = window.confirm("Would you like to play again?");
-
+var shop = function() {
+  // ask player what they'd like to do
+  var shopOptionPrompt = window.prompt(
+    "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
+  );
+  switch (shopOptionPrompt) {
+    case "refill":
+      window.alert("Refilling player's health by 20 for 7 dollars.");
+  
+      // increase health and decrease money
+      playerHealth = playerHealth + 20;
+      playerMoney = playerMoney - 7;
+      break;
+    case "upgrade":
+      window.alert("Upgrading player's attack by 6 for 7 dollars.");
+  
+      // increase attack and decrease money
+      playerAttack = playerAttack + 6;
+      playerMoney = playerMoney - 7;
+      break;
+    case "leave":
+      window.alert("Leaving the store.");
+  
+      // do nothing, so function will end
+      break;
+    default:
+      window.alert("You did not pick a valid option. Try again.");
+  
+      // call shop() again to force player to pick a valid option
+      shop();
+      break;
+  }
+};
 if (playAgainConfirm) {
   // restart the game
   startGame();
@@ -116,4 +153,4 @@ else {
   window.alert("Thank you for playing Robot Gladiators! Come back soon!");
 }
 }
-
+startGame();
